@@ -46,7 +46,7 @@ public class WebProxyJsonRenderer implements JSONRenderer {
         }
 
         json.put("os",  value.get("os"));
-        json.put("java", java.get("version"));
+        json.put("java", java == null ? "none" : java.get("version"));
         json.put("configuration", proxy.getConfig());
 
         SlotsLines rcLines = new SlotsLines();
