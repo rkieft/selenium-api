@@ -343,3 +343,12 @@ you can map your matcher to a capability (name) in the Matcher configuration.
 * The configuration is somewhat elaborate to avoid messing with the core selenium configuration. It might be an idea to
   add a configuration file on its own or to extend the selenium node configuration as the configuration by environment
   might hit a limit at some point (esp. with the ConfigurableCapabilityMatcher).
+
+## Docker / Kubernetes
+
+Build and run in Docker. (Removes the need for JDK/JRE/Gradle etc.)
+```Bash
+docker build . -t selenium-api
+docker run -it -p 4444:4444 selenium-api
+```
+A precompiled image is available on [Dock Hub](https://hub.docker.com/r/joes88/selenium-api)
