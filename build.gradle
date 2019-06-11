@@ -19,6 +19,7 @@ dependencies {
     provided 'org.seleniumhq.selenium:selenium-server:3.14.0'
     compile 'org.json:json:20080701'
     testCompile 'org.testng:testng:6.8.8'
+    compile 'org.influxdb:influxdb-java:2.11'
 }
 
 jar {
