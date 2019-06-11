@@ -8,6 +8,7 @@ import org.openqa.grid.web.Hub;
 import org.openqa.grid.web.servlet.RegistryBasedServlet;
 import org.openqa.selenium.BuildInfo;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Proxy;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -109,12 +110,14 @@ public class Console extends RegistryBasedServlet {
         Hub h = getRegistry().getHub();
 
         List<JSONObject> nodes = new ArrayList<>();
-
         for (RemoteProxy proxy : getRegistry().getAllProxies()) {
             try {
                 JSONRenderer beta = new WebProxyJsonRenderer(proxy);
                 nodes.add(beta.render());
-            } catch (Exception e) {}
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
         }
 
         status.put("version", coreVersion);

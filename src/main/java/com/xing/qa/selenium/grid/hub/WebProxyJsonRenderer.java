@@ -86,7 +86,9 @@ public class WebProxyJsonRenderer implements JSONRenderer {
         json.put("capabilities", slot.getCapabilities());
         TestSession session = slot.getSession();
 
-        if (session != null) {
+        if (session != null 
+          && session.getExternalKey() != null // Session creation failed  https://github.com/SeleniumHQ/selenium/blob/49dc495acaf53bb5f612e2e1552dc5dc40d1c62f/java/server/src/org/openqa/grid/internal/ActiveTestSessions.java#L77
+          ) {
             json.put("session", render(session));
             json.put("busy", true);
         } else {
